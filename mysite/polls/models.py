@@ -12,8 +12,9 @@ class Poll(models.Model):
         return self.question
     
     #custom method
-    def was_published_recently(self):
+    def was_published_today(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    was_published_today.short_description = "Published Today?"
 
 #Each choice is associated with a Poll
 #Contains a tally and a choice

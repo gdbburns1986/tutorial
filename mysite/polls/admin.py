@@ -14,6 +14,13 @@ class PollAdmin(admin.ModelAdmin):
         ]
     #tells django choices are edited on the Poll page
     inlines = [ChoiceInline]
-
+    #customizing the admin change list
+    list_display = ('question', 'pub_date', 'was_published_today')
+    #adding a filter by published date
+    list_filter = ['pub_date']
+    #adding searching
+    search_fields = ['question']
+    #drill down by date
+    date_hierarchy = 'pub_date'
 
 admin.site.register(Poll, PollAdmin)
